@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -206,11 +207,10 @@
             // 
             // button3
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(4, 392);
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.Location = new System.Drawing.Point(397, 158);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(601, 46);
+            this.button3.Size = new System.Drawing.Size(208, 25);
             this.button3.TabIndex = 12;
             this.button3.Text = "Start Converting";
             this.button3.UseVisualStyleBackColor = true;
@@ -224,7 +224,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(4, 207);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(601, 173);
+            this.listBox1.Size = new System.Drawing.Size(601, 121);
             this.listBox1.TabIndex = 13;
             // 
             // label5
@@ -345,9 +345,11 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(217, 160);
+            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar1.Location = new System.Drawing.Point(4, 334);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(388, 23);
+            this.progressBar1.Size = new System.Drawing.Size(602, 33);
             this.progressBar1.TabIndex = 22;
             // 
             // label9
@@ -384,7 +386,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(617, 450);
+            this.ClientSize = new System.Drawing.Size(617, 379);
             this.Controls.Add(this.comboBox6);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.progressBar1);
@@ -409,8 +411,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "FFMPEG Converter";
+            this.ShowIcon = false;
+            this.Text = "FFMPEG Converter [https://github.com/ny4rlk0]";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -95,8 +95,10 @@ namespace FFMPEG_Converter
         }
         void ConvertFiles(string inputFile, string videoQuality, string soundQuality, string videoBitrate, string soundBitrate, string extension,string videoCodecUI, bool keepVideo, bool keepSound)
         {
-
-            var ffmpegPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ffmpeg.exe");
+            //Windows ARM64 FFMPEG executable path
+            //var ffmpegPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ffmpegwinarm64.exe");
+            //Windows x64 FFMPEG executable path
+            var ffmpegPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ffmpegwinx64.exe");
 
             // Build output file path
             string fileName = Path.GetFileNameWithoutExtension(inputFile);
