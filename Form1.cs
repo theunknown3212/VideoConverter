@@ -15,6 +15,7 @@ namespace FFMPEG_Converter
     public partial class Form1 : Form
     {
         private string saveFolderPath = "";
+        private int lineCount = 0;
         public Form1()
         {
             InitializeComponent();
@@ -25,6 +26,7 @@ namespace FFMPEG_Converter
             comboBox5.SelectedIndex = 0;
             comboBox6.SelectedIndex = 0;
             comboBox7.SelectedIndex = 0;
+            progressBar1.BackColor = Color.Black;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -115,7 +117,7 @@ namespace FFMPEG_Converter
             string videoCodec = GetVideoCodec(videoCodecUI);
             // Build FFMPEG arguments
             var args = new StringBuilder();
-            args.Append($"-i \"{inputFile}\" ");
+            args.Append($"-y -i \"{inputFile}\" ");
 
             if (keepVideo)
             {
@@ -195,6 +197,13 @@ namespace FFMPEG_Converter
                         Invoke(new Action(() =>
                         {
                             richTextBox1.AppendText($"{e.Data}\n");
+                            lineCount++;
+                            if (lineCount > 1000)
+                            {
+                                var lines = richTextBox1.Lines;
+                                richTextBox1.Lines = lines.Skip(lines.Length - 500).ToArray();
+                                lineCount = 500;
+                            }
                         }));
                     }
                 };
@@ -207,6 +216,14 @@ namespace FFMPEG_Converter
                         Invoke(new Action(() =>
                         {
                             richTextBox1.AppendText($"{e.Data}\n");
+                            lineCount++;
+                            if (lineCount > 1000)
+                            {
+                                var lines = richTextBox1.Lines;
+                                richTextBox1.Lines = lines.Skip(lines.Length - 500).ToArray();
+                                lineCount = 500;
+                            }
+
                         }));
                     }
                 };
