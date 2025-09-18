@@ -23,6 +23,7 @@ namespace FFMPEG_Converter
             comboBox4.SelectedIndex = 0;
             comboBox5.SelectedIndex = 0;
             comboBox6.SelectedIndex = 0;
+            comboBox7.SelectedIndex = 0;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -72,6 +73,7 @@ namespace FFMPEG_Converter
             string soundQuality = comboBox2.SelectedItem?.ToString();
             string videoBitrate = comboBox3.SelectedItem?.ToString();
             string soundBitrate = comboBox4.SelectedItem?.ToString();
+            string soundSamplerateUI = comboBox7.SelectedItem?.ToString();
             string extension = comboBox5.SelectedItem?.ToString()?.Trim().ToLower();
             string videoCodecUI = comboBox6.SelectedItem?.ToString();
             bool keepVideo = checkBox1.Checked;
@@ -81,7 +83,7 @@ namespace FFMPEG_Converter
             {
                 foreach (string inputFile in listBox1.Items)
                 {
-                    ConvertFiles(inputFile, videoQuality, soundQuality, videoBitrate, soundBitrate, extension,videoCodecUI, keepVideo, keepSound);
+                    ConvertFiles(inputFile, videoQuality, soundQuality, videoBitrate, soundBitrate,soundSamplerateUI, extension,videoCodecUI, keepVideo, keepSound);
 
                     // Update progress on UI thread
                     Invoke(new Action(() =>
@@ -93,7 +95,7 @@ namespace FFMPEG_Converter
 
             MessageBox.Show("Conversion complete!");
         }
-        void ConvertFiles(string inputFile, string videoQuality, string soundQuality, string videoBitrate, string soundBitrate, string extension,string videoCodecUI, bool keepVideo, bool keepSound)
+        void ConvertFiles(string inputFile, string videoQuality, string soundQuality, string videoBitrate, string soundBitrate,string soundSamplerateUI, string extension,string videoCodecUI, bool keepVideo, bool keepSound)
         {
             //Windows ARM64 FFMPEG executable path
             //var ffmpegPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ffmpegwinarm64.exe");
@@ -104,7 +106,7 @@ namespace FFMPEG_Converter
             string fileName = Path.GetFileNameWithoutExtension(inputFile);
             string outputFileName = fileName + "." + extension;
             string outputFile = Path.Combine(saveFolderPath, outputFileName);
-
+            string soundSamplerate = soundSamplerateUI;
             // Map quality to resolution and codec
             var (width, height) = GetVideoResolution(videoQuality);
             string audioCodec = GetAudioFormat(soundQuality);
@@ -140,6 +142,8 @@ namespace FFMPEG_Converter
                         args.Append($"-c:a {audioCodec} ");
                         if (!string.IsNullOrEmpty(soundBitrate) && soundBitrate.ToLower() != "auto")
                             args.Append($"-b:a {soundBitrate}k ");
+                        if (!string.IsNullOrEmpty(soundSamplerate) && soundSamplerate.ToLower() != "auto")
+                            args.Append($"-ar {soundSamplerate} ");
                         break;
 
                     case "libopus":
@@ -150,6 +154,8 @@ namespace FFMPEG_Converter
                     case "libopencore-amrnb":
                     case "libvo-amrwbenc":
                         args.Append($"-c:a {audioCodec} ");
+                        if (!string.IsNullOrEmpty(soundSamplerate) && soundSamplerate.ToLower() != "auto")
+                            args.Append($"-ar {soundSamplerate} ");
                         // These codecs typically auto-manage bitrate or use other flags
                         break;
 
