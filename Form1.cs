@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -61,6 +62,7 @@ namespace FFMPEG_Converter
 
         private async void button3_Click(object sender, EventArgs e)
         {
+            richTextBox1.Clear();
             int totalFiles = listBox1.Items.Count;
             if (totalFiles == 0) return;
 
@@ -173,7 +175,7 @@ namespace FFMPEG_Converter
             args.Append($"\"{outputFile}\"");
 
             // Execute FFMPEG
-            var startInfo = new System.Diagnostics.ProcessStartInfo
+            var startInfo = new ProcessStartInfo
             {
                 FileName = ffmpegPath,
                 Arguments = args.ToString(),
@@ -183,14 +185,38 @@ namespace FFMPEG_Converter
                 CreateNoWindow = true
             };
 
-            using (var process = new System.Diagnostics.Process { StartInfo = startInfo })
+            using (var process = new Process { StartInfo = startInfo, EnableRaisingEvents = true })
             {
-                process.Start();
-                string output = process.StandardError.ReadToEnd();
-                process.WaitForExit();
-                File.WriteAllText(Path.Combine(saveFolderPath, "ffmpeg_log.txt"), output);
+                process.OutputDataReceived += (sender, e) =>
+                {
+                    if (!string.IsNullOrEmpty(e.Data))
+                    {
+                        // Optional: handle stdout (not usually used by FFmpeg)
+                        Invoke(new Action(() =>
+                        {
+                            richTextBox1.AppendText($"{e.Data}\n");
+                        }));
+                    }
+                };
 
+                process.ErrorDataReceived += (sender, e) =>
+                {
+                    if (!string.IsNullOrEmpty(e.Data))
+                    {
+                        // FFmpeg progress and logs typically come through stderr
+                        Invoke(new Action(() =>
+                        {
+                            richTextBox1.AppendText($"{e.Data}\n");
+                        }));
+                    }
+                };
+
+                process.Start();
+                process.BeginOutputReadLine();
+                process.BeginErrorReadLine();
+                process.WaitForExit();
             }
+
         }
         (string width, string height) GetVideoResolution(string quality)
         {
@@ -290,6 +316,12 @@ namespace FFMPEG_Converter
                 default:
                     return null;
             }
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            richTextBox1.SelectionStart = richTextBox1.Text.Length;
+            richTextBox1.ScrollToCaret();
         }
     }
 }

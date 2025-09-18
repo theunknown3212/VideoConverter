@@ -57,6 +57,7 @@
             this.comboBox6 = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.comboBox7 = new System.Windows.Forms.ComboBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -220,19 +221,19 @@
             // 
             // listBox1
             // 
-            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(4, 285);
+            this.listBox1.Location = new System.Drawing.Point(97, 324);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(641, 82);
+            this.listBox1.Size = new System.Drawing.Size(548, 43);
             this.listBox1.TabIndex = 13;
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1, 269);
+            this.label5.Location = new System.Drawing.Point(1, 324);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(90, 13);
             this.label5.TabIndex = 14;
@@ -413,17 +414,35 @@
             "176400",
             "192000",
             "352800",
-            "384000"});
-            this.comboBox7.Location = new System.Drawing.Point(437, 130);
+            "384000",
+            "512000",
+            "756000",
+            "1048575"});
+            this.comboBox7.Location = new System.Drawing.Point(436, 130);
             this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(208, 21);
+            this.comboBox7.Size = new System.Drawing.Size(209, 21);
             this.comboBox7.TabIndex = 26;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox1.Location = new System.Drawing.Point(4, 212);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(641, 109);
+            this.richTextBox1.TabIndex = 27;
+            this.richTextBox1.Text = "";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(657, 428);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.comboBox7);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.comboBox6);
@@ -489,6 +508,7 @@
         private System.Windows.Forms.ComboBox comboBox6;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox comboBox7;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 
